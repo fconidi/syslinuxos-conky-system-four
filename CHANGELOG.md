@@ -1,5 +1,9 @@
 # Changelog
 
+## syslinuxos-conky-menu 0.1.1
+
+- Give the Conky submenu its own scalable icon with colored rings.
+
 ## 0.2.6
 
 - Group Start Window and Stop Window under System Tools > Conky.

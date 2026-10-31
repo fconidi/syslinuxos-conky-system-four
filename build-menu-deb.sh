@@ -3,7 +3,7 @@
 set -euo pipefail
 
 PKG_NAME="syslinuxos-conky-menu"
-PKG_VERSION="0.1.0"
+PKG_VERSION="0.1.1"
 WORKDIR="$(cd "$(dirname "$0")" && pwd)"
 OUTPUT_DIR="${1:-$WORKDIR}"
 mkdir -p "$OUTPUT_DIR"
@@ -26,6 +26,7 @@ Version: $PKG_VERSION
 Section: x11
 Priority: optional
 Architecture: all
+Depends: hicolor-icon-theme
 Maintainer: Franco Conidi (edmond) <fconidi@gmail.com>
 Homepage: https://github.com/fconidi/syslinuxos-conky-window
 Installed-Size: $INSTALLED_SIZE

@@ -3,4 +3,4 @@ Type=Directory
 Name=Conky
 Comment=Conky desktop monitors
 Comment[it]=Monitor Conky per il desktop
-Icon=utilities-system-monitor
+Icon=syslinuxos-conky
