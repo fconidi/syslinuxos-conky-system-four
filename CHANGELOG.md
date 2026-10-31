@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.7
+
+- Use the shared Conky icon for both Start and Stop menu entries.
+
 ## syslinuxos-conky-menu 0.1.1
 
 - Give the Conky submenu its own scalable icon with colored rings.

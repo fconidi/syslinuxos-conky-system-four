@@ -5,5 +5,5 @@ Name[it]=Avvia Window
 Exec=/opt/scripts/conky-window-start.sh
 StartupNotify=false
 Terminal=false
-Icon=/usr/share/pixmaps/syslinuxos-conky-window-start.png
+Icon=syslinuxos-conky
 Categories=X-SysLinuxOS-Conky;

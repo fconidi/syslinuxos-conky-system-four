@@ -5,5 +5,5 @@ Name[it]=Ferma Window
 Exec=/opt/scripts/conky-window-stop.sh
 StartupNotify=false
 Terminal=false
-Icon=/usr/share/pixmaps/syslinuxos-conky-window-stop.png
+Icon=syslinuxos-conky
 Categories=X-SysLinuxOS-Conky;
