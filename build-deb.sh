@@ -6,7 +6,7 @@
 
 set -euo pipefail
 
-PKG_VERSION="0.2.5"
+PKG_VERSION="0.2.6"
 PKG_NAME="syslinuxos-conky-window"
 ARCH="all"
 
@@ -43,7 +43,7 @@ Version: $PKG_VERSION
 Section: x11
 Priority: optional
 Architecture: $ARCH
-Depends: conky-all
+Depends: syslinuxos-conky-menu (>= 0.1.0), conky-all
 Recommends: lsb-release, curl, lm-sensors, x11-utils, x11-xserver-utils
 Replaces: conky-window (<< 0.2.0)
 Breaks: conky-window (<< 0.2.0)
@@ -52,7 +52,7 @@ Homepage: https://syslinuxos.com
 Installed-Size: $INSTALLED_SIZE
 Description: Standard Conky window theme for SysLinuxOS
  System monitor panel (CPU per-core, top processes, memory, filesystem,
- network) integrated into the System > Monitor menu of SysLinuxOS.
+ network) integrated into the System Tools > Conky menu of SysLinuxOS.
  .
  Auto-scales font sizes, widths and bar dimensions to the screen resolution
  at startup (reference 1920x1080, override with CONKY_WINDOW_SCALE=<n>).
@@ -91,8 +91,8 @@ case "$1" in
         fi
         echo
         echo "syslinuxos-conky-window: installation complete."
-        echo "  - Start: Menu > System > Monitor > Conky-window-start"
-        echo "  - Stop:  Menu > System > Monitor > Conky-window-stop"
+        echo "  - Start: Menu > System Tools > Conky > Start Window"
+        echo "  - Stop:  Menu > System Tools > Conky > Stop Window"
         ;;
     abort-upgrade|abort-remove|abort-deconfigure)
         ;;
@@ -184,5 +184,5 @@ dpkg-deb -c "$OUTPUT_DEB" | awk '{print $1, $6}'
 echo
 echo "Build OK: $OUTPUT_DEB"
 echo
-echo "To install/test:"
+echo "To install:"
 echo "  sudo apt install $OUTPUT_DEB"

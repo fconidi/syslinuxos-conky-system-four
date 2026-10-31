@@ -1,0 +1,22 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+ "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+<Menu>
+  <Name>Applications</Name>
+  <Menu>
+    <Name>System</Name>
+    <Menu>
+      <Name>Conky</Name>
+      <Directory>syslinuxos-conky.directory</Directory>
+      <Include>
+        <Category>X-SysLinuxOS-Conky</Category>
+      </Include>
+      <Layout>
+        <Filename>conky-ring-start.desktop</Filename>
+        <Filename>conky-ring-stop.desktop</Filename>
+        <Filename>conky-window-start.desktop</Filename>
+        <Filename>conky-window-stop.desktop</Filename>
+        <Merge type="all"/>
+      </Layout>
+    </Menu>
+  </Menu>
+</Menu>

@@ -1,8 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Conky-window-stop
+Name=Stop Window
+Name[it]=Ferma Window
 Exec=/opt/scripts/conky-window-stop.sh
 StartupNotify=false
 Terminal=false
 Icon=/usr/share/pixmaps/syslinuxos-conky-window-stop.png
-Categories=System;Monitor;
+Categories=X-SysLinuxOS-Conky;

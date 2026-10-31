@@ -1,8 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Conky-window-start
+Name=Start Window
+Name[it]=Avvia Window
 Exec=/opt/scripts/conky-window-start.sh
 StartupNotify=false
 Terminal=false
 Icon=/usr/share/pixmaps/syslinuxos-conky-window-start.png
-Categories=System;Monitor;
+Categories=X-SysLinuxOS-Conky;

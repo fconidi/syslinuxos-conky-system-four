@@ -27,7 +27,17 @@ or from a release `.deb`:
 sudo apt install ./syslinuxos-conky-window_<version>_all.deb
 ```
 
-Start and stop from **Menu > System > Monitor** (Conky-window-start / Conky-window-stop).
+Start and stop from **Menu > System Tools > Conky** (**Start Window** / **Stop Window**, localized when available).
+
+## Shared Conky menu
+
+The `syslinuxos-conky-menu` dependency provides **System Tools > Conky** for
+Ring, Window and other themes. Its sources are in `menu/files/`. Build it with
+`bash build-menu-deb.sh`; install it alongside a downloaded theme package if
+the SysLinuxOS APT repository is not configured. Upgrade both theme packages to move all their launchers into the submenu.
+
+Additional themes should use `Categories=X-SysLinuxOS-Conky;` in their desktop
+launchers and depend on `syslinuxos-conky-menu (>= 0.1.0)`.
 
 ## Build
 
@@ -41,7 +51,7 @@ Produces `syslinuxos-conky-window_<version>_all.deb` (no sudo, uses fakeroot).
 
 **Franco Conidi** (aka *edmond*) — <fconidi@gmail.com> — <https://syslinuxos.com> — <https://francoconidi.it>
 
-GPL-3.0+, see `files/usr/share/doc/conky-window/copyright`.
+GPL-3.0+, see `files/usr/share/doc/syslinuxos-conky-window/copyright`.
 
 ## Renamed from conky-window
 
