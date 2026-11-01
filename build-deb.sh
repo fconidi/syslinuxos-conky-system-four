@@ -6,7 +6,7 @@
 
 set -euo pipefail
 
-PKG_VERSION="0.2.9"
+PKG_VERSION="0.2.10"
 PKG_NAME="syslinuxos-conky-window"
 ARCH="all"
 
@@ -92,8 +92,8 @@ case "$1" in
         fi
         echo
         echo "syslinuxos-conky-window: installation complete."
-        echo "  - Start: Menu > System Tools > Conky > Start Window"
-        echo "  - Stop:  Menu > System Tools > Conky > Stop Window"
+        echo "  - Start: Menu > System Tools > Conky > Start Conky-System-Four"
+        echo "  - Stop:  Menu > System Tools > Conky > Stop Conky-System-Four"
         ;;
     abort-upgrade|abort-remove|abort-deconfigure)
         ;;

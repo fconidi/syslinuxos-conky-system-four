@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.10
+
+- Show the Conky-System-Four launcher names after installation.
+
 ## 0.2.9
 
 - Show the window theme as Conky-System-Four in the Start and Stop menu entries.
