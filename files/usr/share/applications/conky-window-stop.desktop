@@ -1,7 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Stop Window
-Name[it]=Ferma Window
+Name=Stop Conky-System-Four
 Exec=/opt/scripts/conky-window-stop.sh
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Start Window
-Name[it]=Avvia Window
+Name=Start Conky-System-Four
 Exec=/opt/scripts/conky-window-start.sh
 StartupNotify=false
 Terminal=false

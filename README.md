@@ -27,7 +27,7 @@ or from a release `.deb`:
 sudo apt install ./syslinuxos-conky-window_<version>_all.deb
 ```
 
-Start and stop from **Menu > System Tools > Conky** (**Start Window** / **Stop Window**, localized when available).
+Start and stop from **Menu > System Tools > Conky** (**Start Conky-System-Four** / **Stop Conky-System-Four**).
 
 ## Shared Conky menu
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.9
+
+- Show the window theme as Conky-System-Four in the Start and Stop menu entries.
+
 ## 0.2.8
 
 - Use a single aggregate CPU bar above 32 logical processors so the panel remains within its width.
