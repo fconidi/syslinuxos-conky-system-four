@@ -48,7 +48,7 @@ Recommends: lsb-release, curl, lm-sensors, x11-utils, x11-xserver-utils
 Replaces: conky-window (<< 0.2.0)
 Breaks: conky-window (<< 0.2.0)
 Maintainer: Franco Conidi (edmond) <fconidi@gmail.com>
-Homepage: https://syslinuxos.com
+Homepage: https://github.com/fconidi/syslinuxos-conky-system-four
 Installed-Size: $INSTALLED_SIZE
 Description: Standard Conky window theme for SysLinuxOS
  System monitor panel (CPU per-core, top processes, memory, filesystem,

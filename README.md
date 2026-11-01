@@ -1,4 +1,6 @@
-# syslinuxos-conky-window
+# SysLinuxOS Conky System Four
+
+The APT package and installed commands retain the name `syslinuxos-conky-window`.
 
 Conky system-monitor panel for [SysLinuxOS](https://syslinuxos.com), docked on the right side of the desktop.
 

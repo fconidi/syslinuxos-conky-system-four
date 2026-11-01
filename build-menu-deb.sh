@@ -28,7 +28,7 @@ Priority: optional
 Architecture: all
 Depends: hicolor-icon-theme
 Maintainer: Franco Conidi (edmond) <fconidi@gmail.com>
-Homepage: https://github.com/fconidi/syslinuxos-conky-window
+Homepage: https://github.com/fconidi/syslinuxos-conky-system-four
 Installed-Size: $INSTALLED_SIZE
 Description: Shared desktop submenu for SysLinuxOS Conky themes
  Groups Conky theme launchers under System Tools > Conky.
