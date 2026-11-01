@@ -74,9 +74,13 @@ fi
 # Generate CPU bar lines
 #   <=6 threads : one column
 #   7-12        : two columns
-#   >12         : ceil(threads/8) columns (at most 8 rows), narrower bars
+#   13-32       : ceil(threads/8) columns (at most 8 rows), narrower bars
+#   >32         : one aggregate bar for every logical processor
 CPU_BARS_FILE=$(mktemp)
-if [ "$NCPU" -le 6 ]; then
+if [ "$NCPU" -gt 32 ]; then
+    printf '${color 6699dd}All %s threads${color} ${cpubar %s,%s} ${alignr}${cpu}%%\n' \
+        "$NCPU" "$CBAR_H" "$GW180" > "$CPU_BARS_FILE"
+elif [ "$NCPU" -le 6 ]; then
     for i in $(seq 1 "$NCPU"); do
         echo "\${color 6699dd}${i}\${color} \${cpubar ${CBAR_H},${CBAR_W} cpu${i}} \${alignr}\${cpu cpu${i}}%" \
             >> "$CPU_BARS_FILE"

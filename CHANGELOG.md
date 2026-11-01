@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.8
+
+- Use a single aggregate CPU bar above 32 logical processors so the panel remains within its width.
+
 ## 0.2.7
 
 - Use the shared Conky icon for both Start and Stop menu entries.

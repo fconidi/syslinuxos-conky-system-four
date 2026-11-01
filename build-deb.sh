@@ -6,7 +6,7 @@
 
 set -euo pipefail
 
-PKG_VERSION="0.2.7"
+PKG_VERSION="0.2.8"
 PKG_NAME="syslinuxos-conky-window"
 ARCH="all"
 
@@ -56,7 +56,8 @@ Description: Standard Conky window theme for SysLinuxOS
  .
  Auto-scales font sizes, widths and bar dimensions to the screen resolution
  at startup (reference 1920x1080, override with CONKY_WINDOW_SCALE=<n>).
- CPU bars are generated dynamically for any number of logical processors.
+ CPU bars follow the logical processor count; above 32, one aggregate bar
+ keeps the panel compact.
  Configuration template: /etc/conky/conky-window.conf.
 EOF
 
