@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- Use the same azure as the other SysLinuxOS Conky themes.
+
 ## 0.3.0
 
 - Rename the package to `syslinuxos-conky-system-four`; `syslinuxos-conky-window` remains as a transitional package.

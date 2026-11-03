@@ -6,7 +6,7 @@
 
 set -euo pipefail
 
-PKG_VERSION="0.3.0"
+PKG_VERSION="0.3.1"
 PKG_NAME="syslinuxos-conky-system-four"
 ARCH="all"
 

@@ -5,7 +5,7 @@
 
 f12=${CONKY_F12:-12}
 f10=${CONKY_F10:-10}
-ok='${color 4d80df}'
+ok='${color 0abff7}'
 warn='${color ffaa00}'
 bad='${color ff4444}'
 

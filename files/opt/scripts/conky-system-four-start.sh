@@ -80,11 +80,11 @@ fi
 #   >32         : one aggregate bar for every logical processor
 CPU_BARS_FILE=$(mktemp)
 if [ "$NCPU" -gt 32 ]; then
-    printf '${color 6699dd}All %s threads${color} ${cpubar %s,%s} ${alignr}${cpu}%%\n' \
+    printf '${color 0abff7}All %s threads${color} ${cpubar %s,%s} ${alignr}${cpu}%%\n' \
         "$NCPU" "$CBAR_H" "$GW180" > "$CPU_BARS_FILE"
 elif [ "$NCPU" -le 6 ]; then
     for i in $(seq 1 "$NCPU"); do
-        echo "\${color 6699dd}${i}\${color} \${cpubar ${CBAR_H},${CBAR_W} cpu${i}} \${alignr}\${cpu cpu${i}}%" \
+        echo "\${color 0abff7}${i}\${color} \${cpubar ${CBAR_H},${CBAR_W} cpu${i}} \${alignr}\${cpu cpu${i}}%" \
             >> "$CPU_BARS_FILE"
     done
 else
@@ -103,7 +103,7 @@ else
             idx=$(( r + c * ROWS ))
             [ "$idx" -le "$NCPU" ] || continue
             [ "$c" -gt 0 ] && line="${line}\${goto $(( PITCH * c ))}"
-            line="${line}\${color 6699dd}${idx}\${color} \${cpubar ${CBAR_H},${BARW} cpu${idx}} \${cpu cpu${idx}}%"
+            line="${line}\${color 0abff7}${idx}\${color} \${cpubar ${CBAR_H},${BARW} cpu${idx}} \${cpu cpu${idx}}%"
         done
         echo "$line" >> "$CPU_BARS_FILE"
     done
@@ -139,7 +139,7 @@ else
     ROOT_LABEL="ROOT"
     cat > "$HOME_ROWS_FILE" <<'HOMEEOF'
 HOME $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
-${if_match ${fs_used_perc /home}>80}${color ff4444}${else}${if_match ${fs_used_perc /home}>60}${color ffaa00}${else}${color 4d80df}${endif}${endif}${fs_bar /home}${color}
+${if_match ${fs_used_perc /home}>80}${color ff4444}${else}${if_match ${fs_used_perc /home}>60}${color ffaa00}${else}${color 0abff7}${endif}${endif}${fs_bar /home}${color}
 HOMEEOF
 fi
 
@@ -150,7 +150,7 @@ case "$(/opt/scripts/conky-hardware.sh cpu_temp 2>/dev/null)" in
     ""|*[!0-9.]*) ;;
     *)
         cat > "$TEMP_ROW_FILE" <<'TEMPEOF'
-${if_match ${execi 3 /opt/scripts/conky-hardware.sh cpu_temp}>=85}${color ff4444}${else}${if_match ${execi 3 /opt/scripts/conky-hardware.sh cpu_temp}>=70}${color ffaa00}${else}${color 4d80df}${endif}${endif}Temp: ${alignr}${execi 3 /opt/scripts/conky-hardware.sh cpu_temp}°C${color}
+${if_match ${execi 3 /opt/scripts/conky-hardware.sh cpu_temp}>=85}${color ff4444}${else}${if_match ${execi 3 /opt/scripts/conky-hardware.sh cpu_temp}>=70}${color ffaa00}${else}${color 0abff7}${endif}${endif}Temp: ${alignr}${execi 3 /opt/scripts/conky-hardware.sh cpu_temp}°C${color}
 TEMPEOF
         ;;
 esac
