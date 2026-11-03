@@ -1,13 +1,13 @@
 #!/bin/bash
-# Build syslinuxos-conky-window (renamed from conky-window in 0.2.0).
+# Build syslinuxos-conky-system-four (renamed from syslinuxos-conky-system-four in 0.3.0).
 #
-# Output: syslinuxos-conky-window_<VERSION>_all.deb in this directory.
+# Output: syslinuxos-conky-system-four_<VERSION>_all.deb in this directory.
 # No sudo: fakeroot handles root permissions.
 
 set -euo pipefail
 
-PKG_VERSION="0.2.10"
-PKG_NAME="syslinuxos-conky-window"
+PKG_VERSION="0.3.0"
+PKG_NAME="syslinuxos-conky-system-four"
 ARCH="all"
 
 WORKDIR="$(cd "$(dirname "$0")" && pwd)"
@@ -24,12 +24,12 @@ mkdir -p "$STAGING"
 cp -a "$FILES_DIR"/* "$STAGING/"
 
 # --- 1b. Permissions ---
-chmod 755 "$STAGING/opt/scripts/conky-window-start.sh" \
-          "$STAGING/opt/scripts/conky-window-stop.sh" \
+chmod 755 "$STAGING/opt/scripts/conky-system-four-start.sh" \
+          "$STAGING/opt/scripts/conky-system-four-stop.sh" \
           "$STAGING/opt/scripts/conky-hardware.sh" \
           "$STAGING/opt/scripts/conky-net.sh" \
           "$STAGING/opt/scripts/conky-syslinuxos.sh"
-chmod 644 "$STAGING/etc/conky/conky-window.conf"
+chmod 644 "$STAGING/etc/conky/conky-system-four.conf"
 chmod 644 "$STAGING/usr/share/applications/"*.desktop
 chmod 644 "$STAGING/usr/share/doc/$PKG_NAME/"*
 
@@ -43,26 +43,44 @@ Version: $PKG_VERSION
 Section: x11
 Priority: optional
 Architecture: $ARCH
-Depends: syslinuxos-conky-menu (>= 0.1.1), conky-all
+Depends: syslinuxos-conky-menu (>= 0.1.2), conky-all
 Recommends: lsb-release, curl, lm-sensors, x11-utils, x11-xserver-utils
-Replaces: conky-window (<< 0.2.0)
-Breaks: conky-window (<< 0.2.0)
+Replaces: syslinuxos-conky-window (<< 0.3.0)
+Breaks: syslinuxos-conky-window (<< 0.3.0)
 Maintainer: Franco Conidi (edmond) <fconidi@gmail.com>
 Homepage: https://github.com/fconidi/syslinuxos-conky-system-four
 Installed-Size: $INSTALLED_SIZE
-Description: Standard Conky window theme for SysLinuxOS
+Description: Transparent Conky-System-Four desktop monitor for SysLinuxOS
  System monitor panel (CPU per-core, top processes, memory, filesystem,
  network) integrated into the System Tools > Conky menu of SysLinuxOS.
  .
  Auto-scales font sizes, widths and bar dimensions to the screen resolution
- at startup (reference 1920x1080, override with CONKY_WINDOW_SCALE=<n>).
+ at startup (reference 1920x1080, override with CONKY_SYSTEM_FOUR_SCALE=<n>).
  CPU bars follow the logical processor count; above 32, one aggregate bar
  keeps the panel compact.
- Configuration template: /etc/conky/conky-window.conf.
+ Configuration template: /etc/conky/conky-system-four.conf.
 EOF
 
 # conffiles: dpkg preserves user edits across upgrades
-echo "/etc/conky/conky-window.conf" > "$STAGING/DEBIAN/conffiles"
+echo "/etc/conky/conky-system-four.conf" > "$STAGING/DEBIAN/conffiles"
+
+# --- 2b. preinst: carry the user's configuration over from the old name ---
+cat > "$STAGING/DEBIAN/preinst" <<'PREINST'
+#!/bin/sh
+set -e
+
+case "$1" in
+    install|upgrade)
+        OLD=/etc/conky/conky-window.conf
+        NEW=/etc/conky/conky-system-four.conf
+        if [ -f "$OLD" ] && [ ! -e "$NEW" ]; then
+            cp -p "$OLD" "$NEW"
+        fi
+        ;;
+esac
+
+exit 0
+PREINST
 
 # --- 3. postinst ---
 cat > "$STAGING/DEBIAN/postinst" <<'POSTINST'
@@ -72,16 +90,18 @@ set -e
 case "$1" in
     configure)
         # Divert conky.desktop from conky-all to avoid duplicate menu entry.
-        # Our conky-window-start.desktop replaces it.
-        # Migration from the old package name: take over its diversion.
-        if dpkg-divert --list /usr/share/applications/conky.desktop 2>/dev/null | grep -q ' by conky-window$'; then
-            dpkg-divert --package conky-window \
-                --rename \
-                --remove /usr/share/applications/conky.desktop \
-                2>/dev/null || true
-        fi
-        if ! dpkg-divert --list /usr/share/applications/conky.desktop 2>/dev/null | grep -q ' by syslinuxos-conky-window$'; then
-            dpkg-divert --package syslinuxos-conky-window \
+        # Our conky-system-four-start.desktop replaces it.
+        # Migration from the old package names: take over their diversion.
+        for OLD in conky-window syslinuxos-conky-window; do
+            if dpkg-divert --list /usr/share/applications/conky.desktop 2>/dev/null | grep -q " by $OLD\$"; then
+                dpkg-divert --package "$OLD" \
+                    --rename \
+                    --remove /usr/share/applications/conky.desktop \
+                    2>/dev/null || true
+            fi
+        done
+        if ! dpkg-divert --list /usr/share/applications/conky.desktop 2>/dev/null | grep -q ' by syslinuxos-conky-system-four$'; then
+            dpkg-divert --package syslinuxos-conky-system-four \
                 --rename \
                 --divert /usr/share/applications/conky.desktop.distrib \
                 /usr/share/applications/conky.desktop \
@@ -91,7 +111,7 @@ case "$1" in
             update-desktop-database -q /usr/share/applications >/dev/null 2>&1 || true
         fi
         echo
-        echo "syslinuxos-conky-window: installation complete."
+        echo "syslinuxos-conky-system-four: installation complete."
         echo "  - Start: Menu > System Tools > Conky > Start Conky-System-Four"
         echo "  - Stop:  Menu > System Tools > Conky > Stop Conky-System-Four"
         ;;
@@ -139,8 +159,8 @@ set -e
 case "$1" in
     remove|purge)
         # Remove divert of conky.desktop (restore conky-all's file).
-        if dpkg-divert --list /usr/share/applications/conky.desktop 2>/dev/null | grep -q ' by syslinuxos-conky-window$'; then
-            dpkg-divert --package syslinuxos-conky-window \
+        if dpkg-divert --list /usr/share/applications/conky.desktop 2>/dev/null | grep -q ' by syslinuxos-conky-system-four$'; then
+            dpkg-divert --package syslinuxos-conky-system-four \
                 --rename \
                 --remove /usr/share/applications/conky.desktop \
                 2>/dev/null || true
@@ -160,7 +180,7 @@ esac
 exit 0
 POSTRM
 
-chmod 755 "$STAGING/DEBIAN/postinst" "$STAGING/DEBIAN/prerm" "$STAGING/DEBIAN/postrm"
+chmod 755 "$STAGING/DEBIAN/preinst" "$STAGING/DEBIAN/postinst" "$STAGING/DEBIAN/prerm" "$STAGING/DEBIAN/postrm"
 
 # --- 6. md5sums ---
 echo "==> Generating md5sums"

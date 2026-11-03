@@ -2,8 +2,8 @@
 
 REF_W=1920
 REF_H=1080
-CONF_SRC=/etc/conky/conky-window.conf
-CONF_TMP=/tmp/conky-window-scaled.conf
+CONF_SRC=/etc/conky/conky-system-four.conf
+CONF_TMP=/tmp/conky-system-four-scaled.conf
 
 # Detect current screen resolution
 SCREEN_W=""
@@ -33,9 +33,11 @@ case "$NET_IFACE" in
     ""|*[!A-Za-z0-9_.-]*) NET_IFACE=lo ;;
 esac
 
-# Scale factor: min(W/REF_W, H/REF_H). Override: CONKY_WINDOW_SCALE=<factor>
-if [ -n "$CONKY_WINDOW_SCALE" ]; then
-    SCALE=$CONKY_WINDOW_SCALE
+# Scale factor: min(W/REF_W, H/REF_H). Override: CONKY_SYSTEM_FOUR_SCALE=<factor>
+# (the former name CONKY_WINDOW_SCALE is still honoured)
+SCALE_OVERRIDE=${CONKY_SYSTEM_FOUR_SCALE:-$CONKY_WINDOW_SCALE}
+if [ -n "$SCALE_OVERRIDE" ]; then
+    SCALE=$SCALE_OVERRIDE
 else
     SCALE=$(awk -v w="$SCREEN_W" -v h="$SCREEN_H" -v rw="$REF_W" -v rh="$REF_H" \
         'BEGIN { sx=w/rw; sy=h/rh; s=(sx<sy)?sx:sy; printf "%.4f", s }')

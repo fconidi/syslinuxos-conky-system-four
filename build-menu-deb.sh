@@ -3,7 +3,7 @@
 set -euo pipefail
 
 PKG_NAME="syslinuxos-conky-menu"
-PKG_VERSION="0.1.1"
+PKG_VERSION="0.1.2"
 WORKDIR="$(cd "$(dirname "$0")" && pwd)"
 OUTPUT_DIR="${1:-$WORKDIR}"
 mkdir -p "$OUTPUT_DIR"
@@ -13,9 +13,9 @@ trap 'rm -rf "$STAGING"' EXIT
 
 cp -a "$WORKDIR/menu/files/." "$STAGING/"
 mkdir -p "$STAGING/DEBIAN" "$STAGING/usr/share/doc/$PKG_NAME"
-cp "$WORKDIR/files/usr/share/doc/syslinuxos-conky-window/copyright" \
+cp "$WORKDIR/files/usr/share/doc/syslinuxos-conky-system-four/copyright" \
    "$STAGING/usr/share/doc/$PKG_NAME/copyright"
-sed -i "s/Upstream-Name: syslinuxos-conky-window/Upstream-Name: $PKG_NAME/" \
+sed -i "s/Upstream-Name: syslinuxos-conky-system-four/Upstream-Name: $PKG_NAME/" \
     "$STAGING/usr/share/doc/$PKG_NAME/copyright"
 find "$STAGING" -type d -exec chmod 755 {} +
 find "$STAGING" -type f -exec chmod 644 {} +

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Stop Conky-System-Four
-Exec=/opt/scripts/conky-window-stop.sh
+Name=Start Conky-System-Four
+Exec=/opt/scripts/conky-system-four-start.sh
 StartupNotify=false
 Terminal=false
 Icon=syslinuxos-conky

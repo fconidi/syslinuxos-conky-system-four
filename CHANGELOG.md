@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+- Rename the package to `syslinuxos-conky-system-four`; `syslinuxos-conky-window` remains as a transitional package.
+- Rename the configuration, scripts and launchers to `conky-system-four-*`; an edited configuration is carried over.
+- Use `CONKY_SYSTEM_FOUR_SCALE` for the scale override; `CONKY_WINDOW_SCALE` still works.
+
 ## 0.2.10
 
 - Show the Conky-System-Four launcher names after installation.

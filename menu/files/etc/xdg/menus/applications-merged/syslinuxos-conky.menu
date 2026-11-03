@@ -13,8 +13,8 @@
       <Layout>
         <Filename>conky-ring-start.desktop</Filename>
         <Filename>conky-ring-stop.desktop</Filename>
-        <Filename>conky-window-start.desktop</Filename>
-        <Filename>conky-window-stop.desktop</Filename>
+        <Filename>conky-system-four-start.desktop</Filename>
+        <Filename>conky-system-four-stop.desktop</Filename>
         <Merge type="all"/>
       </Layout>
     </Menu>

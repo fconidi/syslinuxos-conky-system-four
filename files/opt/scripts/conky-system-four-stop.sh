@@ -9,7 +9,7 @@ for PID in $(pgrep -x conky 2>/dev/null); do
 done
 
 if [ "$KILLED" -gt 0 ]; then
-    echo "conky-window stopped"
+    echo "conky-system-four stopped"
 else
-    echo "conky-window: not running"
+    echo "conky-system-four: not running"
 fi
